@@ -4,6 +4,11 @@
 # ==============================================================================
 set -e
 
+if [ "$EUID" -eq 0 ]; then
+    echo "HATA: Lütfen bu betiği 'sudo' ile ÇALIŞTIRMAYIN. Normal kullanıcı olarak çalıştırın: ./uninstall.sh"
+    exit 1
+fi
+
 echo "=========================================================="
 echo "      Ghost Rider Duvar Kağıdı Kaldırma Betiği            "
 echo "=========================================================="

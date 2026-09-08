@@ -18,6 +18,13 @@ VIDEO_PATH="$TARGET_DIR/$VIDEO_NAME"
 LOCKSCREEN_PATH="$TARGET_DIR/$LOCKSCREEN_NAME"
 REPO_URL="https://github.com/q0xs/ghost-rider-wallpaper.git"
 
+# Root kontrolü (KDE ayarlarının doğru kullanıcıya yazılması için)
+if [ "$EUID" -eq 0 ]; then
+    echo -e "${RED}HATA: Lütfen bu betiği 'sudo' ile ÇALIŞTIRMAYIN.${NC}"
+    echo "Doğrudan normal kullanıcı olarak çalıştırın: ./install.sh"
+    exit 1
+fi
+
 echo -e "${CYAN}==========================================================${NC}"
 echo -e "${YELLOW}       🔥 Ghost Rider 4K HDR Wallpaper Installer 🔥       ${NC}"
 echo -e "${CYAN}==========================================================${NC}"
@@ -30,6 +37,10 @@ if [ -f "$SCRIPT_DIR/$VIDEO_NAME" ] && [ -f "$SCRIPT_DIR/$LOCKSCREEN_NAME" ]; th
     SOURCE_DIR="$SCRIPT_DIR"
 else
     echo -e "${CYAN}[1/4] Depo indiriliyor (hızlı klon)...${NC}"
+    if ! command -v git >/dev/null 2>&1; then
+        echo -e "${YELLOW}Git paketi bulunamadı, kuruluyor...${NC}"
+        sudo pacman -S --needed --noconfirm git
+    fi
     TEMP_CLONE="/tmp/ghost-rider-wallpaper-$$"
     git clone --depth 1 "$REPO_URL" "$TEMP_CLONE"
     SOURCE_DIR="$TEMP_CLONE"

@@ -1,5 +1,7 @@
 # 🔥 Ghost Rider Skull 4K HDR Live Wallpaper for KDE Plasma 6
 
+![Ghost Rider 4K Wallpaper Preview](preview.jpg)
+
 KDE Plasma 6 (Wayland & X11) için özel olarak optimize edilmiş, temizlenmiş ve kesintisiz döngüye sahip **Ghost Rider Skull 4K 60FPS** canlı masaüstü ve kilit ekranı duvar kağıdı paketi.
 
 Format attıktan sonra **tek bir komutla** hem masaüstü canlı MP4 video duvar kağıdını hem de 4K kilit ekranını otomatik olarak kurar.
@@ -54,6 +56,7 @@ cd ghost-rider-wallpaper && ./uninstall.sh
 ghost-rider-wallpaper/
 ├── ghost_rider_clean_loop_06x.mp4  # 4K 60fps 0.6x temizlenmiş döngü video (88 MB)
 ├── lockscreen_ghost_rider.png      # 4K kilit ekranı görseli (3.6 MB)
+├── preview.jpg                     # Önizleme görseli (194 KB)
 ├── install.sh                      # Tek tıkla otomatik kurulum betiği
 ├── uninstall.sh                    # Kaldırma betiği
 ├── LICENSE                         # MIT Lisansı
