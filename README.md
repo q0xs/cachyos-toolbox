@@ -39,7 +39,6 @@ When launched without arguments, **CachyOS Toolbox** presents an intuitive inter
 │   [*] WALLPAPER  Ghost Rider 4K HDR Live Wallpaper + Lock Screen   │
 │   [*] KRUNNER    Spotlight-style Alt+Space (Centered, Clean)       │
 │   [*] TIMEOUT    Display Sleep Timeout (Set to 20 minutes)         │
-│   [ ] CS2        CS2 Gaming Optimizer (GameMode + Gamescope)       │
 │                                                                    │
 │                 <  OK  >            < Cancel >                     │
 └────────────────────────────────────────────────────────────────────┘
@@ -67,11 +66,6 @@ When launched without arguments, **CachyOS Toolbox** presents an intuitive inter
 ### 3. ⏱️ 20-Minute Display Sleep Timeout
 - Automatically configures KDE Powerdevil to turn off displays after 20 minutes (1200 seconds) of inactivity on both AC and Battery.
 
-### 4. 🎮 CS2 Competitive Gaming Optimizer
-- Installs `gamemode`, `lib32-gamemode`, and `gamescope`.
-- Fixes security capabilities for Gamescope to prevent VAC authentication errors.
-- Provides optimized Steam launch options for native Wayland and 4:3 stretched (1280x960 / 1440x1080 @ 240Hz).
-
 ---
 
 ## 🤖 Non-Interactive / CLI Automation Flags
@@ -86,7 +80,6 @@ You can also run specific modules directly without the TUI using command-line ar
 ./setup.sh --wallpaper
 ./setup.sh --krunner
 ./setup.sh --timeout
-./setup.sh --cs2
 ```
 
 ---
@@ -104,8 +97,7 @@ cachyos-toolbox/
 ├── modules/
 │   ├── wallpaper.sh                    # Live wallpaper & lockscreen module
 │   ├── krunner.sh                      # Spotlight Alt+Space module
-│   ├── timeout.sh                      # 20-minute screen timeout module
-│   └── cs2.sh                          # CS2 gaming optimization module
+│   └── timeout.sh                      # 20-minute screen timeout module
 ├── setup.sh                            # Interactive TUI & master controller
 ├── install.sh                          # Alias forwarding to setup.sh
 ├── uninstall.sh                        # Revert script

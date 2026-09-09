@@ -51,7 +51,6 @@ trap cleanup EXIT
 RUN_WALLPAPER=false
 RUN_KRUNNER=false
 RUN_TIMEOUT=false
-RUN_CS2=false
 NON_INTERACTIVE=false
 
 if [ "$#" -gt 0 ]; then
@@ -62,12 +61,10 @@ if [ "$#" -gt 0 ]; then
                 RUN_WALLPAPER=true
                 RUN_KRUNNER=true
                 RUN_TIMEOUT=true
-                RUN_CS2=true
                 ;;
             --wallpaper) RUN_WALLPAPER=true ;;
             --krunner)   RUN_KRUNNER=true ;;
             --timeout)   RUN_TIMEOUT=true ;;
-            --cs2)       RUN_CS2=true ;;
             -h|--help)
                 echo "Usage: ./setup.sh [OPTIONS]"
                 echo ""
@@ -76,7 +73,6 @@ if [ "$#" -gt 0 ]; then
                 echo "  --wallpaper   Ghost Rider 4K HDR Live Wallpaper + Lock Screen"
                 echo "  --krunner     Spotlight-style Alt+Space (Centered, Minimal)"
                 echo "  --timeout     Set display sleep timeout to 20 minutes"
-                echo "  --cs2         CS2 Gaming & Low-Latency optimizations"
                 echo "  -h, --help    Show this help message"
                 echo ""
                 echo "Running without arguments opens the interactive UI."
@@ -95,11 +91,10 @@ if [ "$NON_INTERACTIVE" = false ]; then
     if command -v whiptail >/dev/null 2>&1 && [ -t 0 ]; then
         CHOICES=$(whiptail --title "⚡ CachyOS Toolbox" \
             --checklist "\nSelect the components you want to install and configure:\n(Use [SPACE] to select/deselect, [ENTER] to confirm)" \
-            18 76 4 \
+            16 76 3 \
             "WALLPAPER" "Ghost Rider 4K HDR Wallpaper (Desktop MP4 + Lockscreen)" ON \
             "KRUNNER"   "Spotlight-style Alt+Space (Centered, Clean, No help icon)" ON \
             "TIMEOUT"   "Display Sleep Timeout (Set screen off to 20 minutes)" ON \
-            "CS2"       "CS2 Gaming Optimizer (GameMode + Gamescope support)" OFF \
             3>&1 1>&2 2>&3) || {
                 echo -e "\n${YELLOW}Installation cancelled by user.${NC}"
                 exit 0
@@ -111,7 +106,6 @@ if [ "$NON_INTERACTIVE" = false ]; then
                 WALLPAPER) RUN_WALLPAPER=true ;;
                 KRUNNER)   RUN_KRUNNER=true ;;
                 TIMEOUT)   RUN_TIMEOUT=true ;;
-                CS2)       RUN_CS2=true ;;
             esac
         done
     else
@@ -123,7 +117,6 @@ if [ "$NON_INTERACTIVE" = false ]; then
         echo "1) Ghost Rider 4K HDR Live Wallpaper + Lock Screen"
         echo "2) Spotlight-style Alt+Space (KRunner Centered & Clean)"
         echo "3) Display Sleep Timeout (20 minutes)"
-        echo "4) CS2 Gaming Optimizations (GameMode & Gamescope)"
         read -p "Enter selections separated by spaces [1 2 3]: " -r user_choices
         user_choices=${user_choices:-"1 2 3"}
         for ch in $user_choices; do
@@ -131,7 +124,6 @@ if [ "$NON_INTERACTIVE" = false ]; then
                 1) RUN_WALLPAPER=true ;;
                 2) RUN_KRUNNER=true ;;
                 3) RUN_TIMEOUT=true ;;
-                4) RUN_CS2=true ;;
             esac
         done
     fi
@@ -154,10 +146,6 @@ fi
 
 if [ "$RUN_TIMEOUT" = true ]; then
     "$MODULES_DIR/timeout.sh"
-fi
-
-if [ "$RUN_CS2" = true ]; then
-    "$MODULES_DIR/cs2.sh"
 fi
 
 echo -e "\n${GREEN}==========================================================${NC}"
