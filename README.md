@@ -55,7 +55,7 @@ When launched without arguments, **CachyOS Toolbox** presents an intuitive inter
 - **0.6x Atmospheric Speed:** Slower, majestic flame animation.
 - **Seamless Infinite Loop:** 20-second continuous crossfade with zero jump cuts.
 - **Distraction-Free:** Audio visualizer, clock, and menu overlays completely removed.
-- **Matching 4K Lock Screen:** Extracts and applies the highest quality still frame to the KDE screen locker.
+- **Matching 4K Lock & Login Screen:** Deploys a system-wide 4K wallpaper package to `/usr/share/wallpapers/GhostRider` and configures both KDE Screen Locker and Plasma Login Manager (PLM) / SDDM so your wallpaper persists upon PC boot.
 - **GitHub Friendly:** Optimized to 88 MB (< 100 MB limit) for instant downloads without Git LFS quotas.
 
 ### 2. 🔍 macOS Spotlight-Style Alt+Space (KRunner)

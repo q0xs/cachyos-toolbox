@@ -36,9 +36,12 @@ if command -v qdbus6 >/dev/null 2>&1; then
 fi
 
 # 3. Clean files (optional prompt)
-read -p "Duvar kağıdı dosyaları ($HOME/.local/share/wallpapers/GhostRider) silinsin mi? [y/N]: " -r response
+read -p "Duvar kağıdı dosyaları ($HOME/.local/share/wallpapers/GhostRider ve /usr/share/wallpapers/GhostRider) silinsin mi? [y/N]: " -r response
 if [[ "$response" =~ ^([yY][eE][sS]|[yY])$ ]]; then
     rm -rf "$HOME/.local/share/wallpapers/GhostRider"
+    if [ -d "/usr/share/wallpapers/GhostRider" ]; then
+        sudo rm -rf "/usr/share/wallpapers/GhostRider" 2>/dev/null || true
+    fi
     echo "✓ Dosyalar silindi."
 fi
 
