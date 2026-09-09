@@ -120,9 +120,10 @@ if [ "$NON_INTERACTIVE" = false ]; then
         echo -e "${BOLD}       ⚡ CachyOS Toolbox - Setup & Customization        ${NC}"
         echo -e "${CYAN}==========================================================${NC}"
         echo "Select options to install (default: 1,2,3):"
-        echo "1) Ghost Rider 4K HDR Live Wallpaper + Lock Screen"
+        echo "1) Ghost Rider 4K Wallpaper (Desktop MP4, Lock & Login Screen)"
         echo "2) Spotlight-style Alt+Space (KRunner Centered & Clean)"
         echo "3) Display Sleep Timeout (20 minutes)"
+        echo "0) Cancel / Exit"
         read -p "Enter selections separated by spaces [1 2 3]: " -r user_choices
         user_choices=${user_choices:-"1 2 3"}
         for ch in $user_choices; do
@@ -130,6 +131,10 @@ if [ "$NON_INTERACTIVE" = false ]; then
                 1) RUN_WALLPAPER=true ;;
                 2) RUN_KRUNNER=true ;;
                 3) RUN_TIMEOUT=true ;;
+                0|q|Q)
+                    echo -e "\n${YELLOW}Installation cancelled by user.${NC}"
+                    exit 0
+                    ;;
             esac
         done
     fi

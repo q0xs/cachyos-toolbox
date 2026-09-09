@@ -19,7 +19,7 @@ LOCKSCREEN_NAME="lockscreen_ghost_rider.png"
 VIDEO_PATH="$TARGET_DIR/$VIDEO_NAME"
 LOCKSCREEN_PATH="$TARGET_DIR/$LOCKSCREEN_NAME"
 
-echo -e "\n${CYAN}[1/3] Checking wallpaper dependencies...${NC}"
+echo -e "\n${CYAN}[1/4] Checking wallpaper dependencies...${NC}"
 MISSING_PKGS=()
 
 if [ ! -d "/usr/share/plasma/wallpapers/com.github.catsout.wallpaperEngineKde" ] && \
@@ -43,14 +43,14 @@ else
 fi
 
 # Copy assets
-echo -e "${CYAN}[2/3] Deploying 4K media files to $TARGET_DIR...${NC}"
+echo -e "${CYAN}[2/4] Deploying 4K media files to $TARGET_DIR...${NC}"
 mkdir -p "$TARGET_DIR"
 cp -f "$ASSETS_DIR/$VIDEO_NAME" "$TARGET_DIR/"
 cp -f "$ASSETS_DIR/$LOCKSCREEN_NAME" "$TARGET_DIR/"
 echo -e "${GREEN}✓ 4K video and lockscreen image deployed.${NC}"
 
 # Apply to Desktop
-echo -e "${CYAN}[3/3] Applying desktop & lockscreen wallpaper...${NC}"
+echo -e "${CYAN}[3/4] Applying 4K 60fps live desktop wallpaper...${NC}"
 if command -v qdbus6 >/dev/null 2>&1; then
     qdbus6 org.kde.plasmashell /PlasmaShell org.kde.PlasmaShell.evaluateScript "
     for (let d of desktops()) {
@@ -92,7 +92,7 @@ except Exception:
 fi
 
 # Apply Lockscreen (User Session)
-echo -e "${CYAN}[3/3] Applying desktop, lockscreen & login screen wallpapers...${NC}"
+echo -e "${CYAN}[4/4] Applying matching 4K lockscreen & login screen...${NC}"
 GLOBAL_DIR="/usr/share/wallpapers/GhostRider"
 GLOBAL_IMG="$GLOBAL_DIR/contents/images/3840x2160.png"
 
