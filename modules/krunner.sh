@@ -21,13 +21,16 @@ if command -v kwriteconfig6 >/dev/null 2>&1; then
     kwriteconfig6 --file krunnerrc --group Plugins --key krunner_helprunnerEnabled false
     kwriteconfig6 --file krunnerrc --group Plugins --key org.kde.helprunnerEnabled false
 
-    # Hide settings button on KRunner bar for a minimalist spotlight appearance
-    kwriteconfig6 --file kdeglobals --group "KDE Control Module Restrictions" --key "kcm_krunnersettings" false
+    # Explicitly bind Alt+Space to KRunner
+    kwriteconfig6 --file kglobalshortcutsrc --group org.kde.krunner.desktop --key _launch "Alt+Space\tAlt+F2\tSearch,Alt+Space\tAlt+F2\tSearch,KRunner"
+    # Ensure Window Operations Menu does not conflict with Alt+Space
+    kwriteconfig6 --file kglobalshortcutsrc --group kwin --key "Window Operations Menu" "Alt+F3,Alt+F3,Window Operations Menu"
 
-    # Restart KRunner daemon so changes take effect immediately
+    # Restart daemons so changes take effect immediately
+    systemctl --user restart plasma-kglobalaccel.service 2>/dev/null || true
     systemctl --user restart plasma-krunner.service 2>/dev/null || (kquitapp6 krunner 2>/dev/null; kstart6 krunner 2>/dev/null &)
 
-    echo -e "${GREEN}✓ KRunner configured: Centered Spotlight mode, clean search bar without question-mark icon.${NC}"
+    echo -e "${GREEN}✓ KRunner configured: Centered Spotlight mode, clean search bar, bound to Alt+Space.${NC}"
 else
     echo "Warning: kwriteconfig6 not found. Are you running KDE Plasma 6?"
 fi

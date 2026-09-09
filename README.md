@@ -1,5 +1,10 @@
 # ⚡ CachyOS Toolbox
 
+[![License](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
+[![OS](https://img.shields.io/badge/OS-CachyOS%20%2F%20Arch%20Linux-green.svg)](https://cachyos.org)
+[![Desktop](https://img.shields.io/badge/Desktop-KDE%20Plasma%206-purple.svg)](https://kde.org/plasma-desktop/)
+[![Shell](https://img.shields.io/badge/Shell-Bash-black.svg)](https://www.gnu.org/software/bash/)
+
 ![CachyOS Toolbox Preview](assets/preview.jpg)
 
 **A sleek, modular post-installation setup & optimization suite for CachyOS and KDE Plasma 6.**
@@ -36,7 +41,7 @@ When launched without arguments, **CachyOS Toolbox** presents an intuitive inter
 │                                                                    │
 │  Select the components you want to install and configure:           │
 │                                                                    │
-│   [*] WALLPAPER  Ghost Rider 4K HDR Live Wallpaper + Lock Screen   │
+│   [*] WALLPAPER  Ghost Rider 4K Wallpaper (Desktop MP4, Lock/Login)│
 │   [*] KRUNNER    Spotlight-style Alt+Space (Centered, Clean)       │
 │   [*] TIMEOUT    Display Sleep Timeout (Set to 20 minutes)         │
 │                                                                    │
@@ -74,12 +79,12 @@ You can also run specific modules directly without the TUI using command-line ar
 
 ```bash
 # Apply everything at once
-./setup.sh --all
+./setup.sh --all        # or: ./setup.sh -a
 
 # Apply only individual modules
-./setup.sh --wallpaper
-./setup.sh --krunner
-./setup.sh --timeout
+./setup.sh --wallpaper  # or: ./setup.sh -w
+./setup.sh --krunner    # or: ./setup.sh -k
+./setup.sh --timeout    # or: ./setup.sh -t
 ```
 
 ---

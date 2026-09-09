@@ -23,6 +23,7 @@ if command -v kwriteconfig6 >/dev/null 2>&1; then
     if command -v qdbus6 >/dev/null 2>&1; then
         qdbus6 org.kde.Solid.PowerManagement /org/kde/Solid/PowerManagement refreshStatus 2>/dev/null || true
     fi
+    systemctl --user restart plasma-powerdevil.service 2>/dev/null || true
 
     echo -e "${GREEN}✓ Display sleep timeout set to 20 minutes (AC and Battery).${NC}"
 else

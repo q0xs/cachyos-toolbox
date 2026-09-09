@@ -47,6 +47,11 @@ cleanup() {
 }
 trap cleanup EXIT
 
+# Ensure interactive terminal access even when piped (e.g., curl ... | bash)
+if [ ! -t 0 ] && [ -e /dev/tty ]; then
+    exec < /dev/tty
+fi
+
 # Parse command line flags for non-interactive / direct execution
 RUN_WALLPAPER=false
 RUN_KRUNNER=false
@@ -57,25 +62,26 @@ if [ "$#" -gt 0 ]; then
     NON_INTERACTIVE=true
     for arg in "$@"; do
         case "$arg" in
-            --all)
+            -a|--all)
                 RUN_WALLPAPER=true
                 RUN_KRUNNER=true
                 RUN_TIMEOUT=true
                 ;;
-            --wallpaper) RUN_WALLPAPER=true ;;
-            --krunner)   RUN_KRUNNER=true ;;
-            --timeout)   RUN_TIMEOUT=true ;;
+            -w|--wallpaper) RUN_WALLPAPER=true ;;
+            -k|--krunner)   RUN_KRUNNER=true ;;
+            -t|--timeout)   RUN_TIMEOUT=true ;;
             -h|--help)
+                echo "⚡ CachyOS Toolbox - Setup & Customization Suite"
                 echo "Usage: ./setup.sh [OPTIONS]"
                 echo ""
                 echo "Options:"
-                echo "  --all         Install and configure all components"
-                echo "  --wallpaper   Ghost Rider 4K HDR Live Wallpaper + Lock Screen"
-                echo "  --krunner     Spotlight-style Alt+Space (Centered, Minimal)"
-                echo "  --timeout     Set display sleep timeout to 20 minutes"
-                echo "  -h, --help    Show this help message"
+                echo "  -a, --all         Install and configure all components"
+                echo "  -w, --wallpaper   Ghost Rider 4K HDR Live Wallpaper, Lock & Login Screen"
+                echo "  -k, --krunner     Spotlight-style Alt+Space (Centered, Minimal)"
+                echo "  -t, --timeout     Set display sleep timeout to 20 minutes"
+                echo "  -h, --help        Show this help message"
                 echo ""
-                echo "Running without arguments opens the interactive UI."
+                echo "Running without arguments opens the interactive checklist UI."
                 exit 0
                 ;;
             *)
@@ -92,7 +98,7 @@ if [ "$NON_INTERACTIVE" = false ]; then
         CHOICES=$(whiptail --title "⚡ CachyOS Toolbox" \
             --checklist "\nSelect the components you want to install and configure:\n(Use [SPACE] to select/deselect, [ENTER] to confirm)" \
             16 76 3 \
-            "WALLPAPER" "Ghost Rider 4K HDR Wallpaper (Desktop MP4 + Lockscreen)" ON \
+            "WALLPAPER" "Ghost Rider 4K Wallpaper (Desktop MP4, Lock & Login Screen)" ON \
             "KRUNNER"   "Spotlight-style Alt+Space (Centered, Clean, No help icon)" ON \
             "TIMEOUT"   "Display Sleep Timeout (Set screen off to 20 minutes)" ON \
             3>&1 1>&2 2>&3) || {
