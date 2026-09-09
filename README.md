@@ -1,70 +1,130 @@
-# 🔥 Ghost Rider Skull 4K HDR Live Wallpaper for KDE Plasma 6
+# ⚡ CachyOS Toolbox
 
-![Ghost Rider 4K Wallpaper Preview](preview.jpg)
+![CachyOS Toolbox Preview](assets/preview.jpg)
 
-KDE Plasma 6 (Wayland & X11) için özel olarak optimize edilmiş, temizlenmiş ve kesintisiz döngüye sahip **Ghost Rider Skull 4K 60FPS** canlı masaüstü ve kilit ekranı duvar kağıdı paketi.
+**A sleek, modular post-installation setup & optimization suite for CachyOS and KDE Plasma 6.**
 
-Format attıktan sonra **tek bir komutla** hem masaüstü canlı MP4 video duvar kağıdını hem de 4K kilit ekranını otomatik olarak kurar.
+Designed for rapid deployment after formatting or setting up a new system. Features an interactive terminal UI (TUI) with checkboxes so you can pick and apply only the tweaks you want in seconds.
 
 ---
 
-## ⚡ Hızlı Kurulum (Tek Komut)
+## 🚀 Quick Start (One-Liner)
 
-Bilgisayarınıza format attığınızda terminali açıp yalnızca şu **tek satırlık** komutu yapıştırmanız yeterlidir:
+Open your terminal and run this single command:
 
 ```bash
-curl -sSL https://raw.githubusercontent.com/q0xs/ghost-rider-wallpaper/main/install.sh | bash
+bash <(curl -sSL https://raw.githubusercontent.com/q0xs/cachyos-toolbox/main/setup.sh)
 ```
 
-*Alternatif olarak repoyu manuel klonlayıp kurmak isterseniz:*
-```bash
-git clone https://github.com/q0xs/ghost-rider-wallpaper.git && cd ghost-rider-wallpaper && ./install.sh
-```
-
----
-
-## ✨ Kurulum Neler Yapar?
-
-1. 🎬 **Masaüstü Canlı MP4 Duvar Kağıdı:**
-   - 4K Ultra HD (3840x2160) @ 60 FPS.
-   - 0.6x atmosferik hızında pürüzsüz ve sakin alev animasyonu.
-   - 20 saniyelik kusursuz ve atlamasız sonsuz döngü (crossfade loop).
-   - Sol alttaki müzik çalar ("Rage Sound") ve sağ alttaki saat/tarih bileşenleri tamamen temizlendi.
-   - Çift monitör dahil tüm ekranlara otomatik uygulanır.
-2. 🔒 **4K Kilit Ekranı (Lock Screen):**
-   - Videonun en net ve parıldayan anından 4K çözünürlükte kilit ekranı arka planı ayarlanır.
-3. ⏱️ **Ekran Uyku Süresi:**
-   - Ekran kapanma süresi otomatik olarak 20 dakika (1200 sn) olarak ayarlanır.
-4. 📦 **Gereksinim Yönetimi:**
-   - Eksikse `plasma6-wallpapers-wallpaper-engine-git` ve `mpv` paketlerini otomatik tespit eder.
-
----
-
-## 🗑️ Kaldırma / Revert
-
-Varsayılan KDE Plasma duvar kağıdına geri dönmek isterseniz:
+### Manual Installation (Git Clone)
 
 ```bash
-cd ghost-rider-wallpaper && ./uninstall.sh
+git clone https://github.com/q0xs/cachyos-toolbox.git
+cd cachyos-toolbox
+chmod +x setup.sh
+./setup.sh
 ```
 
 ---
 
-## 📂 Dosya Yapısı
+## 🖥️ Interactive TUI Experience
+
+When launched without arguments, **CachyOS Toolbox** presents an intuitive interactive checklist dialog:
 
 ```text
-ghost-rider-wallpaper/
-├── ghost_rider_clean_loop_06x.mp4  # 4K 60fps 0.6x temizlenmiş döngü video (88 MB)
-├── lockscreen_ghost_rider.png      # 4K kilit ekranı görseli (3.6 MB)
-├── preview.jpg                     # Önizleme görseli (194 KB)
-├── install.sh                      # Tek tıkla otomatik kurulum betiği
-├── uninstall.sh                    # Kaldırma betiği
-├── LICENSE                         # MIT Lisansı
-└── README.md                       # Dokümantasyon
+┌───────────────────────── ⚡ CachyOS Toolbox ─────────────────────────┐
+│                                                                    │
+│  Select the components you want to install and configure:           │
+│                                                                    │
+│   [*] WALLPAPER  Ghost Rider 4K HDR Live Wallpaper + Lock Screen   │
+│   [*] KRUNNER    Spotlight-style Alt+Space (Centered, Clean)       │
+│   [*] TIMEOUT    Display Sleep Timeout (Set to 20 minutes)         │
+│   [ ] CS2        CS2 Gaming Optimizer (GameMode + Gamescope)       │
+│                                                                    │
+│                 <  OK  >            < Cancel >                     │
+└────────────────────────────────────────────────────────────────────┘
+```
+
+> **Navigation:** Use `Arrow Keys` to move, `Space` to toggle checkboxes, `Tab` to switch to buttons, and `Enter` to confirm.
+
+---
+
+## 📦 Included Modules
+
+### 1. 🔥 Ghost Rider 4K HDR Live Wallpaper & Lockscreen
+- **4K Ultra HD (3840x2160) @ 60 FPS** video wallpaper powered by KDE's Wallpaper Engine plugin (`com.github.catsout.wallpaperEngineKde`).
+- **0.6x Atmospheric Speed:** Slower, majestic flame animation.
+- **Seamless Infinite Loop:** 20-second continuous crossfade with zero jump cuts.
+- **Distraction-Free:** Audio visualizer, clock, and menu overlays completely removed.
+- **Matching 4K Lock Screen:** Extracts and applies the highest quality still frame to the KDE screen locker.
+- **GitHub Friendly:** Optimized to 88 MB (< 100 MB limit) for instant downloads without Git LFS quotas.
+
+### 2. 🔍 macOS Spotlight-Style Alt+Space (KRunner)
+- Centers KRunner in the middle of your screen as a floating search bar.
+- Removes the question mark (`helprunner`) and settings button for a minimalist, clean interface.
+- Bound to `Alt+Space` for instant access.
+
+### 3. ⏱️ 20-Minute Display Sleep Timeout
+- Automatically configures KDE Powerdevil to turn off displays after 20 minutes (1200 seconds) of inactivity on both AC and Battery.
+
+### 4. 🎮 CS2 Competitive Gaming Optimizer
+- Installs `gamemode`, `lib32-gamemode`, and `gamescope`.
+- Fixes security capabilities for Gamescope to prevent VAC authentication errors.
+- Provides optimized Steam launch options for native Wayland and 4:3 stretched (1280x960 / 1440x1080 @ 240Hz).
+
+---
+
+## 🤖 Non-Interactive / CLI Automation Flags
+
+You can also run specific modules directly without the TUI using command-line arguments:
+
+```bash
+# Apply everything at once
+./setup.sh --all
+
+# Apply only individual modules
+./setup.sh --wallpaper
+./setup.sh --krunner
+./setup.sh --timeout
+./setup.sh --cs2
 ```
 
 ---
 
-## 📄 Lisans / License
+## 🛠️ Modular Architecture
 
-Bu proje [MIT Lisansı](LICENSE) ile lisanslanmıştır. Orijinal duvar kağıdı tasarımı ilgili telif hakkı sahiplerine aittir.
+Adding your own custom scripts or system tweaks is as simple as dropping an executable bash script into `modules/`:
+
+```text
+cachyos-toolbox/
+├── assets/
+│   ├── ghost_rider_clean_loop_06x.mp4  # 4K 60fps 0.6x video loop (88 MB)
+│   ├── lockscreen_ghost_rider.png      # 4K lockscreen image (3.6 MB)
+│   └── preview.jpg                     # Preview banner (194 KB)
+├── modules/
+│   ├── wallpaper.sh                    # Live wallpaper & lockscreen module
+│   ├── krunner.sh                      # Spotlight Alt+Space module
+│   ├── timeout.sh                      # 20-minute screen timeout module
+│   └── cs2.sh                          # CS2 gaming optimization module
+├── setup.sh                            # Interactive TUI & master controller
+├── install.sh                          # Alias forwarding to setup.sh
+├── uninstall.sh                        # Revert script
+├── LICENSE                             # MIT License
+└── README.md                           # Documentation
+```
+
+---
+
+## 🗑️ Uninstallation / Revert
+
+To restore default KDE wallpaper and lock screen settings:
+
+```bash
+./uninstall.sh
+```
+
+---
+
+## 📄 License
+
+This project is licensed under the [MIT License](LICENSE).
